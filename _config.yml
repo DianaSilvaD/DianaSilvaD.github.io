@@ -14,9 +14,9 @@ timezone: America/Lima
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Trabajo de Invetigación # the main title
+title: Diana Silva # the main title
 
-tagline: Cibersecutity  # it will display as the subtitle
+tagline: Trabajo de Investigación | Cibersecutity  # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
