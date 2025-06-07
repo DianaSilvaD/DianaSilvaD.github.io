@@ -12,21 +12,12 @@ tags: [cronograma]
 | Tarea                                              | Duración (días) |
 |----------------------------------------------------|-----------------|
 | Crear VMs y configurar red                         | 2               | ✅ |
+| Promover el servidor a controlador de dominio      | 2               | ✅ |
 | Unir clientes al dominio                           | 1               |
 
 ---
 
-# Fase 2: Herramientas y Planificación
-
-| Tarea                                              | Duración (días) |
-|----------------------------------------------------|-----------------|
-| Instalar herramientas ofensivas y defensivas       | 1               |
-| Adaptar TTPs a acciones concretas                  | 1               |
-| Planificar fases (acceso, persistencia, etc.)      | 1               |
-
----
-
-# Fase 3: Emulación de Técnicas    
+# Fase 2: Emulación de Técnicas    
 
 | Tarea                                              | Duración (días) |
 |----------------------------------------------------|-----------------|
@@ -38,7 +29,7 @@ tags: [cronograma]
 
 ---
 
-# Fase 4: Análisis y Documentación
+# Fase 3: Análisis y Documentación
 
 | Tarea                                              |Duración (días) |
 |----------------------------------------------------|----------------|
