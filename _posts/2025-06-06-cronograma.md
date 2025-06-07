@@ -11,7 +11,7 @@ tags: [cronograma]
 
 | Tarea                                              | Duración (días) |
 |----------------------------------------------------|-----------------|
-| Crear VMs y configurar red                         | 1               |
+| Crear VMs y configurar red                         | 2               | ✅ |
 | Unir clientes al dominio                           | 1               |
 
 ---
