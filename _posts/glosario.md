@@ -1,9 +1,3 @@
----
-title: Glosario de términos 
-date: 2025-05-18 00:00:00 -05:00
-categories: [apt]
-tags: [apt, virtual machine, wizard spider]
----
 
 
 ## 🔤 A
@@ -59,3 +53,4 @@ def saludar():
 !-->
 
 <!-- ![figura](/assets/images/2025-05-19-s05/IMG_20240302_215057.jpg) -->
+

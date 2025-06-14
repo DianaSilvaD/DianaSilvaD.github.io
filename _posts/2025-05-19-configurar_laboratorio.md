@@ -1,26 +1,58 @@
 ---
-title: Fase 1 - Preparación del Laboratorio 
+title: 1. Configuración del entorno | Infraestructura
 date: 2025-05-19 00:00:00 -05:00
 categories: [apt]
 tags: [apt, virtual machine, wizard spider]
 ---
 
-# Objetivos
+# 1. Configuración del entorno | Infraestructura
 
-## 1. Crear VMs y configurar red
-
-### 1.1. Maquinas virtuales 
-
-| SO                                | Rol                | Nombre |Enlace de descarga                                                                                       |
-|-----------------------------------|--------------------|--------|---------------------------------------------------------------------------------------------------------|
-| Kali Linux 2019                   | Atacante           |attacker|<https://old.kali.org/kali-images/kali-2019.1a/>                                                         |
-| Windows Server 2k19 - Build 17763 | Domain Controller  |wizard  |<https://archive.org/details/17763.3650.221105-1748.rs-5-release-svc-refresh-server-eval-x-64-fre-en-us> |
-| Windows 10 - Build 19042          | User machine 1     |dorothy |<https://archive.org/details/windows-10-insider-preview-client-x-64-en-us-19042>                         |
-| Windows 10 - Build 19042          | User machine 2     |toto    |<https://archive.org/details/windows-10-insider-preview-client-x-64-en-us-19042>                         |
+## Tabla de Contenidos
+1. [Objetivos](#objetivos)
+2. [Topología de Red](#topología-de-red)
+3. [Requisitos Previos](#requisitos-previos)
+4. [Configuración de Máquinas Virtuales](#configuración-de-máquinas-virtuales)
+   - [Kali Linux 2019 - Attacker](#kali-linux-2019---attacker)
+   - [Windows Server 2019 - Wizard (DC)](#windows-server-2019---wizard-dc)
+   - [Windows 10 - Dorothy](#windows-10---dorothy)
+   - [Windows 10 - Toto](#windows-10---toto)
 
 ---
 
-### 1.2. **Kali Linux 2019 - attacker**
+## Objetivos
+
+1. Crear un entorno aislado para emular TTPs del grupo Wizard Spider
+2. Configurar dominio Active Directory con políticas de seguridad
+3. Preparar estaciones de trabajo para simulación de ataques
+4. Establecer conexión entre máquina atacante y red interna
+
+---
+
+## Topología de Red
+
+| Componente         | IP Address     | Rol                   |
+|--------------------|----------------|-----------------------|
+| Kali Linux         | 192.168.0.4    | Máquina Atacante      |
+| Windows Server     | 10.0.0.4       | Domain Controller     |
+| Windows 10 (Dorothy)| 10.0.0.7      | Workstation 1 |
+| Windows 10 (Toto)  | 10.0.0.8       | Workstation 2 |
+
+---
+
+## Requisitos previos
+- Virtual Box
+- Isos
+
+    | SO                                | Rol                | Nombre |Enlace de descarga                                                                                       |
+    |-----------------------------------|--------------------|--------|---------------------------------------------------------------------------------------------------------|
+    | Kali Linux 2019                   | Atacante           |attacker|<https://old.kali.org/kali-images/kali-2019.1a/>                                                         |
+    | Windows Server 2k19 - Build 17763 | Domain Controller  |wizard  |<https://archive.org/details/17763.3650.221105-1748.rs-5-release-svc-refresh-server-eval-x-64-fre-en-us> |
+    | Windows 10 - Build 19042          | User machine 1     |dorothy |<https://archive.org/details/windows-10-insider-preview-client-x-64-en-us-19042>                         |
+    | Windows 10 - Build 19042          | User machine 2     |toto    |<https://archive.org/details/windows-10-insider-preview-client-x-64-en-us-19042>                         |
+
+---
+## Configuración de Máquinas Virtuales
+### **Kali Linux 2019 - Attacker**
 
 #### Creación de maquina virtual en el Virtual Box
 
@@ -156,7 +188,7 @@ git clone https://github.com/center-for-threat-informed-defense/adversary_emulat
 
 --- 
 
-### 1.3. **Windows Server 2k19 - Build 17763 - wizard**
+### **Windows Server 2019 - Wizard (DC)**
 
 #### Creación de maquina virtual en el Virtual Box
 
@@ -260,7 +292,7 @@ git clone https://github.com/center-for-threat-informed-defense/adversary_emulat
 
 ---
 
-### 1.4. **Windows 10 - Build 19042 - dorothy**
+### **Windows 10 - Dorothy**
 
 #### Creación de maquina virtual en Virtual Box
 
@@ -324,7 +356,7 @@ git clone https://github.com/center-for-threat-informed-defense/adversary_emulat
 
 --- 
 
-### 1.5. **Windows 10 - Build 19042 - toto**
+### **Windows 10 - Toto**
 
 #### Creación de maquina virtual en Virtual Box
 - Configuración de Hardware
@@ -372,38 +404,3 @@ git clone https://github.com/center-for-threat-informed-defense/adversary_emulat
 
 ![image.png](/assets/images/2025-05-19-s05/Captura de pantalla 2025-05-24 002302.png)
 
-
-<!--
-# Título 1
-## Título 2
-### Título 3
-#### Título 4
-!-->
-
-<!--
-**Negrita**
-*Cursiva*
-~~Tachado~~
-`Código en línea`
-!-->
-
-<!--
-- [ ] Tarea pendiente
-- [x] Tarea completada
-!-->
-
-<!--
-```python
-def saludar():
-    print("Hola mundo")
-```
-<!-- [Texto visible](https://example.com ) <!--
-
-<!-- [Descargar archivo](./ruta/archivo.pdf)
- <!--
-
-<!--
-![Texto alternativo](https://ruta.com/imagen.png)
-!-->
-
-<!-- ![figura](/assets/images/2025-05-19-s05/IMG_20240302_215057.jpg) -->
