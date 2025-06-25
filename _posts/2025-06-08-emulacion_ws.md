@@ -62,12 +62,12 @@ Simular la acción del usuario al abrir el documento malicioso, lo que desencade
 ![image.png](/assets/images/2025-06-08-emulacion/Captura desde 2025-06-23 20-14-47.png)  
 
 
-### 2. Confirmar la sesión C2 (20 minutos)
+### 2. Confirmar la sesión (20 minutos)
 
 Verificar que Emotet se ha ejecutado correctamente en Dorothy y ha establecido una conexión con tu servidor de control en Kali.
 
-- Volver a la terminal en tu máquina atacante (Kali Linux) que renombraste como "Control Server" (donde ejecutaste sudo ./controlServer).
-- Se debe visualizar un nuevo "callback" o sesión entrante en la salida del servidor. Esto indica que Emotet en Dorothy se ha conectado exitosamente. Busca mensajes que confirmen una nueva conexión o sesión.
+- Volver a la terminal en tu máquina atacante (Kali Linux) donde se ejecuto 'sudo ./controlServer'.
+- Visualizar un nuevo "callback" o sesión entrante en la salida del servidor. Esto indica que Emotet en Dorothy se ha conectado exitosamente. Busca mensajes que confirmen una nueva conexión o sesión.
 
 
 
