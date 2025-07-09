@@ -62,46 +62,31 @@ Simular la acción del usuario al abrir el documento malicioso, lo que desencade
 ![image.png](/assets/images/2025-06-08-emulacion/Captura desde 2025-06-23 20-14-47.png)  
 
 
-### 2. Confirmar la sesión (20 minutos)
+### 2. Confirmar la sesión
 
 Verificar que Emotet se ha ejecutado correctamente en Dorothy y ha establecido una conexión con tu servidor de control en Kali.
 
 - Volver a la terminal en tu máquina atacante (Kali Linux) donde se ejecuto 'sudo ./controlServer'.
 - Visualizar un nuevo "callback" o sesión entrante en la salida del servidor. Esto indica que Emotet en Dorothy se ha conectado exitosamente. Busca mensajes que confirmen una nueva conexión o sesión.
 
+![image.png](/assets/images/2025-06-08-emulacion/Captura desde 2025-07-05 12-08-20.png)  
 
 
+![image.png](/assets/images/2025-06-08-emulacion/Captura desde 2025-07-05 12-18-10.png)  
 
-
----
-
-
-# posibles titulos:
-
-    “Emulación Controlada de Wizard Spider, APT en un Entorno Simulado”
-
-    “Aplicación de Técnicas de Adversary Emulation para la Comprensión de Wizard Spider en un Laboratorio Virtual”
-
-    “Simulación de un Ataque de Wizard Spider: Un Enfoque Basado en Escenarios Reales”
-
-    “Plan de Emulación de Wizard Spider en un Entorno Controlado#
-
-    “Emulación Táctica de Wizard Spider: De Emotet a Ryuk”
-
-    “Emulación Práctica de APTs: Wizard Spider en un Laboratorio Virtualizado”
-
-    “Diseño y Ejecución de un Escenario de Emulación Basado en Wizard Spider”
-
-    “Estudio Práctico del Comportamiento de Wizard Spider mediante Adversary Emulation con CALDERA y Técnicas MITRE ATT&CK”
+![image.png](/assets/images/2025-06-08-emulacion/Captura desde 2025-07-07 19-50-51.png)  
 
 --- 
-<!-- 
+
 # FASE 2: PERSISTENCIA de Emotet Registry Key
 
-Objetivo: Simular persistencia modificando el registro.
-Procedimiento:
+Este paso describe cómo el malware Emotet, una vez ejecutado en el sistema, establece su **persistencia**. La persistencia es una técnica utilizada por los atacantes para asegurar que el malware se reactive automáticamente cada vez que el sistema se reinicia o el usuario inicia sesión, garantizando su presencia continua en el equipo comprometido.
 
-## 1. Establecer persistencia:
+En este escenario, Emotet utiliza el **Registro de Windows** para lograr su persistencia. El Registro de Windows es una base de datos jerárquica que almacena configuraciones esenciales para el sistema operativo y las aplicaciones. La clave específica que Emotet manipula es una ubicación conocida donde los programas pueden registrarse para ejecutarse automáticamente al iniciar sesión el usuario.
+
+Objetivo: Simular persistencia modificando el registro.
+
+<!-- ## 1. Establecer persistencia:
 
 En la terminal de la máquina atacante, ejecutar el siguiente comando:
 
@@ -111,9 +96,62 @@ En la terminal de la máquina atacante, ejecutar el siguiente comando:
 
 ## 2. Confirmar en Dorothy que se creó la clave:
 - Ruta: HKCU\Software\Microsoft\Windows\CurrentVersion\Run
-- Clave: blbdigital, Valor: rundll32.exe %userprofile%\Ygyhlqt\Bx5jfmo\R43H.dll,Control_RunDLL
+- Clave: blbdigital, Valor: rundll32.exe %userprofile%\Ygyhlqt\Bx5jfmo\R43H.dll,Control_RunDLL -->
 
 
+## 1. Detalles de la Persistencia de Emotet
+
+Emotet establece su persistencia creando una nueva entrada en la siguiente ruta del Registro:
+
+  * **Ruta del Registro:** 
+    ```
+    HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+    ```
+Dentro de esta ruta, Emotet añade una **clave** con un **valor** específico que le permite ejecutarse.
+
+  * **Clave Creada:** `blbdigital`
+
+      * Esta es la nueva entrada que Emotet inserta en la ruta del Registro. Sirve como un identificador para la carga útil del malware.
+
+  * **Valor Asignado a la Clave:** `rundll32.exe %userprofile%\Ygyhlqt\Bx5jfmo\R43H.dll,Control_RunDLL`
+
+      <!-- * Este valor es el comando que Windows ejecutará cuando el usuario `judy` inicie sesión. Desglosemos este comando:
+          * `rundll32.exe`: Es una utilidad legítima de Windows que se usa para ejecutar funciones dentro de bibliotecas de vínculos dinámicos (DLL). Es comúnmente abusada por el malware para ejecutar sus propios archivos DLL sin levantar sospechas inmediatas, ya que `rundll32.exe` es un proceso legítimo del sistema.
+          * `%userprofile%\Ygyhlqt\Bx5jfmo\R43H.dll`: Esta es la **ruta completa al archivo DLL malicioso de Emotet**.
+              * `%userprofile%`: Es una variable de entorno de Windows que se expande a la ruta del directorio del perfil del usuario actual (por ejemplo, `C:\Users\judy`).
+              * `\Ygyhlqt\Bx5jfmo\R43H.dll`: Indica que el archivo DLL malicioso llamado `R43H.dll` se encuentra anidado dentro de carpetas con nombres aparentemente aleatorios (`Ygyhlqt` y `Bx5jfmo`) dentro del perfil del usuario. Los nombres aleatorios son una táctica de evasión.
+          * `,Control_RunDLL`: Especifica una función particular dentro del archivo `R43H.dll` que `rundll32.exe` debe invocar para ejecutar el malware. -->
+
+<!-- **En resumen:** Al crear esta entrada en el Registro, Emotet asegura que cada vez que el usuario `judy` inicie sesión en el sistema `dorothy` (10.0.0.7), el archivo `R43H.dll` (que contiene el código de Emotet) se ejecutará automáticamente, manteniendo así el control sobre el sistema. -->
+
+## 2. Verificación de la Persistencia (Paso Post-Ejecución)
+
+Para verificar la persistencia descrita en el Paso 2, seguir estos pasos:
+
+1.  **Completar el Paso 1:** Emotet debe haber sido ejecutado con éxito en el sistema `dorothy` (10.0.0.7) a través del documento `ChristmasCard.docm`.
+2.  **Acceder al sistema Dorothy:** Si estás operando de forma remota, asegúrate de tener una conexión de RDP activa a `dorothy` como el usuario `judy`.
+3.  **Abrir el Editor del Registro de Windows:**
+      * Presiona `Windows + R` para abrir el cuadro de diálogo "Ejecutar".
+      * Escribe `regedit.exe` y presiona `Enter`.
+      * Acepta la solicitud de Control de Cuentas de Usuario (UAC) si aparece.
+4.  **Navega a la Ruta de Persistencia:**
+      * En el panel izquierdo del Editor del Registro, navega hasta la siguiente ruta:
+        ```
+        HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+        ```
+5.  **Buscar la Clave de Emotet:**
+      * En el panel derecho, busca una entrada (un valor de registro) con el nombre `blbdigital`.
+6.  **Verifica el Valor:**
+      * Haz doble clic en `blbdigital` para ver sus datos de valor.
+      * Confirma que los "Datos del valor" coincidan exactamente con:
+        ```
+        rundll32.exe %userprofile%\Ygyhlqt\Bx5jfmo\R43H.dll,Control_RunDLL
+        ```
+
+Si encuentras la clave `blbdigital` con el valor especificado, habrás verificado con éxito que Emotet ha establecido su mecanismo de persistencia en el sistema.
+
+
+<!-- 
 --- 
 
 # Fase 3: Descubrimiento de Host de Emotet y Recolección de Credenciales
@@ -165,3 +203,25 @@ Se obtendra el acceso al usuario bill@oz.local para la siguiente fase.
 ```bash
 
 ``` -->
+
+
+---
+
+
+# posibles titulos:
+
+    “Emulación Controlada de Wizard Spider, APT en un Entorno Simulado”
+
+    “Aplicación de Técnicas de Adversary Emulation para la Comprensión de Wizard Spider en un Laboratorio Virtual”
+
+    “Simulación de un Ataque de Wizard Spider: Un Enfoque Basado en Escenarios Reales”
+
+    “Plan de Emulación de Wizard Spider en un Entorno Controlado#
+
+    “Emulación Táctica de Wizard Spider: De Emotet a Ryuk”
+
+    “Emulación Práctica de APTs: Wizard Spider en un Laboratorio Virtualizado”
+
+    “Diseño y Ejecución de un Escenario de Emulación Basado en Wizard Spider”
+
+    “Estudio Práctico del Comportamiento de Wizard Spider mediante Adversary Emulation con CALDERA y Técnicas MITRE ATT&CK”

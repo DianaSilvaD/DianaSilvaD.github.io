@@ -52,7 +52,7 @@ Esta semana se enfoca en establecer la infraestructura, lograr el acceso inicial
 
         Abrir `ChristmasCard.docm` y habilitar macros, monitoreando la ejecución de la DLL de Emotet. <!--(8 horas - **incluye tiempo de solución de problemas/depuración si la ejecución inicial falla, o si hay que evadir alguna detección simulada.**)-->
 
-        * **Actividad extra:**
+        <!-- * **Actividad extra:**
             - revisar código de la macros
             - conceptos claros de enrutamiento, buscar el enrutamiento adecuado
                 - verificar la red, que todos tengan continuidad (mejorar conocimientos de networking)
@@ -63,7 +63,7 @@ Esta semana se enfoca en establecer la infraestructura, lograr el acceso inicial
                 - TCP dump
                 - netcad
                 - procmon
-            - documentar
+            - documentar -->
 
 
     * **Actividad 1.7: Confirmar Callback C2 y Documentación Inicial:** 
