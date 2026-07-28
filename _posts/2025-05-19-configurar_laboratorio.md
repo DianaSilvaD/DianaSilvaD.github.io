@@ -3,6 +3,8 @@ title: 1. Configuración del entorno | Infraestructura
 date: 2025-05-19 00:00:00 -05:00
 categories: [apt]
 tags: [apt, virtual machine, wizard spider]
+published: false
+
 ---
 
 # 1. Configuración del entorno | Infraestructura

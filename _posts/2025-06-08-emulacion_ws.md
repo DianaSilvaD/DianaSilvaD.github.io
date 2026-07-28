@@ -1,5 +1,7 @@
 ---
 title: Plan de Emulación - Escenario 1 de Wizard Spider
+published: false
+
 ---
 
 # Preparación del entorno:
