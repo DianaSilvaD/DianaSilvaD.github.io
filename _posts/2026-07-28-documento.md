@@ -4,6 +4,7 @@ date: 2026-07-28 16:30:00 -0500
 categories: [Documentación]
 tags: [pdf, documento]
 description: Documento completo disponible en formato PDF.
+published: false
 ---
 
 <iframe
