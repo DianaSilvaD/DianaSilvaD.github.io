@@ -1,5 +1,5 @@
 ---
-title: Docuemento
+title: Documento
 date: 2026-07-29 16:30:00 -0500
 categories: [Documentación]
 tags: [pdf, documento]
